@@ -29,6 +29,60 @@ CareLove addresses real-world problems in healthcare appointment scheduling by p
 - **Real-time Statistics**: Live counts of appointment statuses
 - **Customizable Physician List**: Easily update the roster of available doctors and physicians
 
+
+## 🚀 Getting Started
+### For Healthcare Providers (Admin Access)
+
+**IMPORTANT: To view the appointment you just scheduled as a patient, you MUST access the admin dashboard.**
+
+1. **Access the Admin Dashboard**
+   - On the home page, locate and click the green **"ADMIN"** button in the top right corner
+   - You will be prompted to enter a passkey
+
+2. **Enter the Passkey**
+   - **Enter: `123456`**
+   - Click "Access Admin" or press Enter
+   - *Note: In a production environment, this would be a one-time password (OTP) sent to the healthcare provider's email or phone for authentication. For demonstration purposes, a static passkey is used.*
+
+3. **View Your Scheduled Appointment**
+   - Once logged in, you'll immediately see the admin dashboard
+   - Your newly scheduled appointment will appear in the appointments table
+   - The dashboard displays:
+     - **Statistics**: Total scheduled, pending, and canceled appointments
+     - **Appointments Table**: All appointments with patient names, status, date/time, and assigned doctor
+
+4. **Manage Appointments**
+   - For each appointment in the table, you can:
+     - **Schedule/Confirm**: Click the **green calendar icon** to confirm a pending appointment
+     - **Cancel**: Click the **red X icon** to cancel an appointment
+   
+5. **Schedule or Cancel Actions**
+   - When you click an action button, a modal will appear
+   - **To Schedule**: 
+     - Confirm the appointment details
+     - Optionally add scheduling notes
+     - Click "Schedule Appointment"
+   - **To Cancel**:
+     - Enter a cancellation reason (required)
+     - Click "Cancel Appointment"
+   - The appointment status will update immediately in the table
+
+---
+
+## 🔄 Complete User Flow Example
+
+To see the full application in action:
+
+1. **Step 1**: Go to the home page and click "Get Started"
+2. **Step 2**: Fill in patient information and schedule an appointment
+3. **Step 3**: Return to the home page
+4. **Step 4**: Click the green **"ADMIN"** button
+5. **Step 5**: Enter passkey `123456`
+6. **Step 6**: View your scheduled appointment in the admin dashboard
+7. **Step 7**: Try scheduling or canceling the appointment to see real-time updates
+
+This demonstrates the complete patient-to-provider workflow that healthcare facilities would use in production.
+
 ---
 
 ## 🛠️ Tech Stack
@@ -52,8 +106,6 @@ CareLove addresses real-world problems in healthcare appointment scheduling by p
 - **TanStack Table** - Powerful table component for the admin dashboard
 
 ---
-
-## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+ installed
