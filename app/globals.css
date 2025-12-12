@@ -1,0 +1,789 @@
+@import "tailwindcss";
+
+/* ========================================== CSS VARIABLES FOR SHADCN/UI */
+@layer base {
+  :root {
+    --primary: 36 207 124;
+    --primary-foreground: 255 255 255;
+    --secondary: 121 181 236;
+    --secondary-foreground: 26 29 33;
+    --accent: 121 181 236;
+    --accent-foreground: 26 29 33;
+    --destructive: 243 120 119;
+    --destructive-foreground: 255 255 255;
+    --background: 26 29 33;
+    --foreground: 171 184 196;
+    --muted: 118 130 141;
+    --muted-foreground: 118 130 141;
+    --card: 19 22 25;
+    --card-foreground: 171 184 196;
+    --border: 54 58 61;
+    --input: 54 58 61;
+    --ring: 36 207 124;
+  }
+
+  .dark {
+    --primary: 36 207 124;
+    --primary-foreground: 255 255 255;
+    --secondary: 121 181 236;
+    --secondary-foreground: 26 29 33;
+    --accent: 121 181 236;
+    --accent-foreground: 26 29 33;
+    --destructive: 243 120 119;
+    --destructive-foreground: 255 255 255;
+    --background: 26 29 33;
+    --foreground: 171 184 196;
+    --muted: 118 130 141;
+    --muted-foreground: 118 130 141;
+    --card: 19 22 25;
+    --card-foreground: 171 184 196;
+    --border: 54 58 61;
+    --input: 54 58 61;
+    --ring: 36 207 124;
+  }
+}
+
+/* ========================================== TAILWIND THEME */
+@theme {
+  --color-green-500: #24ae7c;
+  --color-green-600: #0d2a1f;
+
+  --color-blue-500: #79b5ec;
+  --color-blue-600: #152432;
+
+  --color-red-500: #f37877;
+  --color-red-600: #3e1716;
+  --color-red-700: #f24e43;
+
+  --color-light-200: #e8e9e9;
+
+  --color-dark-200: #0d0f10;
+  --color-dark-300: #131619;
+  --color-dark-400: #1a1d21;
+  --color-dark-500: #363a3d;
+  --color-dark-600: #76828d;
+  --color-dark-700: #abb8c4;
+
+  --font-family-sans: var(--font-sans);
+}
+
+/* ========================================== KEYFRAMES */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  70%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ========================================== BASE STYLES */
+@layer base {
+}
+
+/* ========================================== UTILITIES */
+@layer utilities {
+  /* ===== TYPOGRAPHY (DEFINE FIRST - NO @apply) */
+  .text-36-bold {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: bold;
+  }
+
+  .text-32-bold {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: bold;
+  }
+
+  .text-24-bold {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: bold;
+  }
+
+  .text-18-bold {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+  }
+
+  .text-16-semibold {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+  }
+
+  .text-16-regular {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  .text-14-medium {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+  }
+
+  .text-14-regular {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+
+  .text-12-regular {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+  }
+
+  .text-12-semibold {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+  }
+
+  /* ===== FLEXBOX UTILITIES */
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ===== SCROLLBAR */
+  .remove-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .remove-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ===== LAYOUT */
+  .sidebar {
+    width: 100%;
+    max-width: 18rem;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background-color: #1a1d21;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .left-sidebar {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .left-sidebar {
+      display: flex;
+    }
+  }
+
+  .right-sidebar {
+    display: none;
+  }
+
+  @media (min-width: 1280px) {
+    .right-sidebar {
+      display: flex;
+    }
+  }
+
+  .container {
+    position: relative;
+    flex: 1;
+    overflow-y: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .sub-container {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* ===== ANIMATIONS */
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+
+  .animate-caret-blink {
+    animation: caret-blink 1.25s ease-out infinite;
+  }
+
+  /* ===== BACKGROUNDS */
+  .bg-image {
+    background-color: #1a1d21;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .bg-appointments {
+    background-image: url("/assets/images/appointments-bg.png");
+  }
+
+  .bg-pending {
+    background-image: url("/assets/images/pending-bg.png");
+  }
+
+  .bg-canceled {
+    background-image: url("/assets/images/canceled-bg.png");
+  }
+
+  /* ===== TEXT STYLING */
+  .clip-text {
+    background-clip: text;
+    color: transparent;
+  }
+
+  .header {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: bold;
+  }
+
+  @media (min-width: 768px) {
+    .header {
+      font-size: 36px;
+      line-height: 40px;
+    }
+  }
+
+  .sub-header {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+  }
+
+  @media (min-width: 768px) {
+    .sub-header {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  }
+
+  .side-img {
+    display: none;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    .side-img {
+      display: block;
+    }
+  }
+
+  .copyright {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    justify-items: end;
+    text-align: center;
+    color: #76828d;
+  }
+
+  @media (min-width: 1280px) {
+    .copyright {
+      text-align: left;
+    }
+  }
+
+  /* ===== SUCCESS PAGE */
+  .success-img {
+    margin: auto;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .request-details {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border-top: 2px solid #1a1d21;
+    border-bottom: 2px solid #1a1d21;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .request-details {
+      width: fit-content;
+      flex-direction: row;
+    }
+  }
+
+  /* ===== ADMIN */
+  .admin-header {
+    position: sticky;
+    top: 0.75rem;
+    z-index: 20;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1rem;
+    background-color: #0d0f10;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 1280px) {
+    .admin-header {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  .admin-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    space-y: 1.5rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 3rem;
+  }
+
+  @media (min-width: 1280px) {
+    .admin-main {
+      space-y: 3rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  .admin-stat {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .admin-stat {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .admin-stat {
+      gap: 2.5rem;
+    }
+  }
+
+  /* ===== FORMS */
+  .radio-group {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px dashed #363a3d;
+    background-color: #1a1d21;
+    padding: 0.75rem;
+  }
+
+  .checkbox-label {
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #abb8c4;
+  }
+
+  .checkbox-label:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  @media (min-width: 768px) {
+    .checkbox-label {
+      line-height: 0;
+    }
+  }
+
+  .file-upload {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 0.375rem;
+    border: 1px dashed #363a3d;
+    background-color: #1a1d21;
+    padding: 1.25rem;
+  }
+
+  .file-upload_label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    text-align: center;
+    color: #76828d;
+  }
+
+  /* ===== CARDS */
+  .stat-card {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 1rem;
+    background-size: cover;
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .status-badge {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* ===== DATA TABLE */
+  .data-table {
+    z-index: 10;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 1px solid #1a1d21;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-actions {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  /* ===== SHADCN OVERRIDES */
+  .shad-primary-btn {
+    background-color: #24ae7c !important;
+    color: white !important;
+  }
+
+  .shad-danger-btn {
+    background-color: #f24e43 !important;
+    color: white !important;
+  }
+
+  .shad-gray-btn {
+    border: 1px solid #363a3d !important;
+    cursor: pointer !important;
+    background-color: #1a1d21 !important;
+    color: white !important;
+  }
+
+  .shad-input-label {
+    font-size: 14px !important;
+    line-height: 18px !important;
+    font-weight: 500 !important;
+    color: #abb8c4 !important;
+  }
+
+  .shad-input {
+    background-color: #1a1d21 !important;
+    border-color: #363a3d !important;
+    height: 2.75rem !important;
+    focus-visible: ring 0 !important;
+    focus-visible: ring-offset 0 !important;
+  }
+
+  .shad-input::placeholder {
+    color: #76828d !important;
+  }
+
+  .shad-input-icon {
+    background-color: #1a1d21 !important;
+    border-color: #363a3d !important;
+    height: 2.75rem !important;
+  }
+
+  .shad-input-icon::placeholder {
+    color: #76828d !important;
+  }
+
+  .shad-textArea {
+    background-color: #1a1d21 !important;
+    border-color: #363a3d !important;
+    focus-visible: ring 0 !important;
+    focus-visible: ring-offset 0 !important;
+  }
+
+  .shad-textArea::placeholder {
+    color: #76828d !important;
+  }
+
+  .shad-combobox-item {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+  }
+
+  .shad-combobox-trigger {
+    height: 2.75rem !important;
+  }
+
+  .shad-select-trigger {
+    background-color: #1a1d21 !important;
+    border-color: #363a3d !important;
+    height: 2.75rem !important;
+    focus: ring 0 !important;
+    focus: ring-offset 0 !important;
+  }
+
+  .shad-select-trigger::placeholder {
+    color: #76828d !important;
+  }
+
+  .shad-select-content {
+    background-color: #1a1d21 !important;
+    border-color: #363a3d !important;
+  }
+
+  .shad-dialog {
+    background-color: #1a1d21 !important;
+    border-color: #363a3d !important;
+  }
+
+  .shad-dialog button {
+    focus: ring 0 !important;
+    focus: ring-offset 0 !important;
+    focus-visible: border-none !important;
+    focus-visible: outline-none !important;
+    focus-visible: ring-transparent !important;
+    focus-visible: ring-offset 0 !important;
+  }
+
+  .shad-error {
+    color: #f37877 !important;
+  }
+
+  .shad-table {
+    border-radius: 0.5rem !important;
+    overflow: hidden !important;
+  }
+
+  .shad-table-row-header {
+    border-bottom: 1px solid #1a1d21 !important;
+    color: #e8e9e9 !important;
+    hover: background-color transparent !important;
+  }
+
+  .shad-table-row {
+    border-bottom: 1px solid #1a1d21 !important;
+    color: #e8e9e9 !important;
+  }
+
+  .shad-otp {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+  .shad-otp-slot {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: bold;
+    justify-content: center !important;
+    display: flex !important;
+    border: 1px solid #363a3d !important;
+    border-radius: 0.5rem !important;
+    width: 4rem !important;
+    height: 4rem !important;
+    gap: 1rem !important;
+  }
+
+  .shad-alert-dialog {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    background-color: #1a1d21 !important;
+    border-color: #363a3d !important;
+    outline: none !important;
+  }
+
+  .shad-sheet-content button {
+    top: 0.5rem !important;
+    focus: ring 0 !important;
+    focus: ring-offset 0 !important;
+    focus-visible: border-none !important;
+    focus-visible: outline-none !important;
+    focus-visible: ring-transparent !important;
+    focus-visible: ring-offset 0 !important;
+  }
+
+  /* ===== REACT PHONE NUMBER INPUT OVERRIDES */
+  .input-phone {
+    margin-top: 0.5rem !important;
+    height: 2.75rem !important;
+    border-radius: 0.375rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    font-size: 0.875rem !important;
+    border: 1px solid #363a3d !important;
+    background-color: #1a1d21 !important;
+  }
+
+  .input-phone::placeholder {
+    color: #76828d !important;
+  }
+
+  /* ===== REACT DATE PICKER OVERRIDES */
+  .date-picker {
+    overflow: hidden !important;
+    border: none !important;
+    width: 100% !important;
+    height: 2.75rem !important;
+    border-radius: 0.375rem !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    outline: none !important;
+  }
+
+  .date-picker::placeholder {
+    color: #76828d !important;
+  }
+}
+
+/* ========================================== REACT-DATEPICKER OVERRIDES */
+.react-datepicker-wrapper.date-picker {
+  display: flex;
+  align-items: center;
+}
+
+.react-datepicker,
+.react-datepicker__time,
+.react-datepicker__header,
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker-time__header {
+  background-color: #1a1d21 !important;
+  border-color: #363a3d !important;
+  color: #abb8c4 !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker-time__header {
+  color: #ffffff !important;
+}
+
+.react-datepicker__triangle {
+  fill: #1a1d21 !important;
+  color: #1a1d21 !important;
+  stroke: #1a1d21 !important;
+}
+
+.react-datepicker__time-list-item:hover {
+  background-color: #363a3d !important;
+}
+
+.react-datepicker__input-container input {
+  background-color: #1a1d21 !important;
+  width: 100%;
+  outline: none;
+}
+
+.react-datepicker__day--selected {
+  background-color: #24ae7c !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #24ae7c !important;
+}
+
+.react-datepicker__time-container {
+  border-left: 1px solid #363a3d !important;
+}
+
+.react-datepicker__time-list-item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* ========================================== REACT PHONE NUMBER INPUT OVERRIDES */
+.PhoneInputInput {
+  outline: none;
+  margin-left: 4px;
+  background: #1a1d21;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.PhoneInputInput::placeholder {
+  color: #1a1d21;
+}
